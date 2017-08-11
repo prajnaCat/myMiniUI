@@ -1,0 +1,32 @@
+miniui中按条件修改背景颜色
+datagrid1.on("drawcell",function (e) {
+		var grid = e.sender;
+		var record = e.record;
+         if(e.field=="jiaonum"&&(record.jiaonum!=record.tasknum)){
+         e.cellStyle = "background:red";
+        }
+        if(e.field=="pingfnum"&&(record.jiaonum!=record.pingfnum)){
+         e.cellStyle = "background:orange";
+        }
+        if(e.field=="pfstatus"&&(record.pfstatus!="22")){
+         e.cellStyle = "background:#A4D3EE";
+        }
+
+    });
+	
+	按照字典显示字符
+	 $(document).ready(function(){
+        xbChange();
+    });
+
+    var Genders = [{ id:'01', text: '男' }, { id:'02', text: '女'}];
+    function xbChange() {
+        var xb=mini.get("xb");
+        for (var i = 0, l = Genders.length; i < l; i++) {
+            var g = Genders[i];
+            if (g.id == data.xb){
+                xb.setValue(g.text);
+			}
+        }
+        return "";
+    }
